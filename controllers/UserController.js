@@ -21,25 +21,35 @@ const UserController = {
         });
       });
   },
-  async deleteUser(req,res) {
+  async deleteUser(req, res) {
     try {
       await User.destroy({
-        where:{
-          id:req.params.id,
+        where: {
+          id: req.params.id,
         },
       });
       await Account.destroy({
-        where:{
-          id:req.params.id,
+        where: {
+          id: req.params.id,
         },
       });
-      res.send({msg:"User deleted"})
+      res.send({ msg: "User deleted" });
     } catch (error) {
-      console.error(err)
-      res
-        .status(500)
-        .send({msg:"problem deleting user", err})
+      console.error(err);
+      res.status(500).send({ msg: "problem deleting user", err });
     }
   },
-}
+
+  async updateUserById(req, res) {
+    await User.update({ ...req.body },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    );
+    res.send({msg: "Usuario actualizado con éxito", User});
+  },
+};
+
 module.exports = UserController;
