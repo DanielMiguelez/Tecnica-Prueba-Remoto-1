@@ -14,7 +14,7 @@ const AccountController = {
     },
     getAccounts(req, res) {
         Account.findAll({
-          include: [User],
+          include: [{model:User, attributes: ["name"]}]
         })
           .then((accounts) => res.send(accounts))
           .catch((err) => {
