@@ -1,5 +1,7 @@
-const { User, Account } = require("../models/index.js");
+const { User, Account, Token } = require("../models/index.js");
 const bcrypt = require ('bcryptjs');
+const jwt = require('jsonwebtoken');
+const { jwt_secret } = require('../config/config.json')['development']
 
 const UserController = {
   createUser(req, res) {
@@ -25,7 +27,10 @@ login(req,res){
     if(!isMatch){
       return res.status(400).send({message:"User or password are not correct"})
     }
-    res.send(user)
+    const token = jwt.sign({ id: user.id }, jwt_secret);
+    Token.create({ token, UserId: user.id });
+    res.send({ message: 'Bienvenid@ ' + user.name, user, token });
+   
   })
 },
 
