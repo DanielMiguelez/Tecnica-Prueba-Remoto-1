@@ -4,11 +4,13 @@ const { Account, User, Historial, Lending } = require("../models/index.js");
 const AccountController = {
   createAccount(req, res) {
     Account.create(req.body)
+    
       .then((account) => {
         res.status(201).send({
           msg: "account created",
           account,
         });
+
       })
       .catch((err) => {
         console.error(err);
@@ -18,7 +20,7 @@ const AccountController = {
   getAccounts(req, res) {
     Account.findAll({
       include: [
-        { model: User, attributes: ["name"] },
+        { model: User },
         { model: Historial, attributes: ["AccountId", "owner", "payments"] },
         { model: Lending, attributes: ["AccountId", "amount"] },
       ],
