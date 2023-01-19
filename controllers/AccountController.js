@@ -14,7 +14,7 @@ const AccountController = {
     },
     getAccounts(req, res) {
         Account.findAll({
-          include: [{model:User, attributes: ["name"]}, {model:Historial, attributes: ["AccountId", "owner", "payments"]}
+          include: [{model:User, attributes: ["name"]}, {model:Historial, attributes: ["AccountId", "owner", "payments"]}, {model:Lending, attributes: ["AccountId", "amount"]}
         ]
         })
           .then((accounts) => res.send(accounts))
@@ -25,6 +25,8 @@ const AccountController = {
               });
           });
       },
+      
+
 
 }
 module.exports = AccountController
