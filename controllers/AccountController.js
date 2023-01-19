@@ -1,5 +1,6 @@
 const { Account, User, Historial, Lending } = require("../models/index.js");
 
+
 const AccountController = {
   createAccount(req, res) {
     Account.create(req.body)

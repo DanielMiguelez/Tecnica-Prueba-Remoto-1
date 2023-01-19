@@ -1,5 +1,6 @@
 const { Historial, Account } = require("../models/index.js");
 
+
 const HistorialController = {
   createHistorial(req, res) {
     Historial.create(req.body)
