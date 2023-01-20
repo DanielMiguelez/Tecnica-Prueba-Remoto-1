@@ -20,5 +20,7 @@ router.put(
   isAdmin,
   UserController.updateUserById
 );
+router.get("/confirm/:email", UserController.confirm)
+router.get('/recoverPassword/:email',UserController.recoverPassword)
 
 module.exports = router;

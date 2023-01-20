@@ -15,11 +15,13 @@ const UserController = {
         confirmed: false,
         rol: "user",
       });
+      
+      const url = 'http://localhost:3000/users/confirm/'+ req.body.email
       await transporter.sendMail({
         to: req.body.email,
         subject: "Confirm your registration",
         html: `<h3>Welcome, youre about to register! </h3>
-    <a href="#"> Click to confirm!</a>
+    <a href="${url}"> Click to confirm!</a>
     `,
       });
       res.status(201).send({
@@ -117,8 +119,45 @@ const UserController = {
         },
       }
     );
-    res.send({ msg: "Usuario actualizado con éxito", User });
+    res.send({ msg: "User updated successfully", User });
   },
-};
+  async confirm(req, res) {
+    try {
+      await User.update(
+        { confirmed: true },
+        {
+          where: {
+            email: req.params.email,
+          },
+        }
+      );
+
+      res.status(201).send("User confirmed successfully");
+    } catch (error) {
+      console.error(error);
+    }
+  },
+  async recoverPassword(req, res) {
+    try {
+      const recoverToken = jwt.sign({ email: req.params.email }, jwt_secret, {
+        expiresIn: "48h",
+      });
+      const url = "http://localhost:3000/users/recoverPassword/" + recoverToken;
+      await transporter.sendMail({
+        to: req.body.email,
+        subject: "Recuperar contraseña",
+        html: `<h3> Recuperar contraseña </h3>
+  <a href="${url}">Recuperar contraseña</a>
+  El enlace expirará en 48 horas
+  `,
+      });
+      res.send({
+        message: "Un correo de recuperación se envio a tu dirección de correo",
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+}
 
 module.exports = UserController;
