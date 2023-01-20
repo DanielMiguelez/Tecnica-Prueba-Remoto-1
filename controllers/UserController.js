@@ -1,18 +1,34 @@
-const { User, Account, Token, Sequelize} = require("../models/index.js");
+const { User, Account, Token, Sequelize } = require("../models/index.js");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { jwt_secret } = require("../config/config.json")["development"];
-const {Op} = Sequelize;
+const { Op } = Sequelize;
+const transporter = require("../config/nodemailer");
 
 const UserController = {
-  createUser(req, res) {
-    req.body.role = "user";
-    const password = bcrypt.hashSync(req.body.password, 10);
-    User.create({ ...req.body, password: password })
-      .then((user) => {
-        res.status(201).send({ msg: "user created", user });
-      })
-      .catch((err) => console.error(err));
+  async createUser(req, res, next) {
+    try {
+      const hash = bcrypt.hashSync(req.body.password, 10);
+      const user = await User.create({
+        ...req.body,
+        password: hash,
+        confirmed: false,
+        rol: "user",
+      });
+      await transporter.sendMail({
+        to: req.body.email,
+        subject: "Confirm your registration",
+        html: `<h3>Welcome, youre about to register! </h3>
+    <a href="#"> Click to confirm!</a>
+    `,
+      });
+      res.status(201).send({
+        message: "We sent you an email",
+        user,
+      });
+    } catch (err) {
+      next(err);
+    }
   },
 
   login(req, res) {
@@ -26,6 +42,10 @@ const UserController = {
           .status(400)
           .send({ message: "user or password are not correct" });
       }
+      if (!user.confirmed) {
+        return res.status(400).send({ message: "Confirm your email" });
+      }
+
       const isMatch = bcrypt.compareSync(req.body.password, user.password);
       if (!isMatch) {
         return res
