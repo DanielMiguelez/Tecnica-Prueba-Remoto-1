@@ -10,3 +10,5 @@ app.use('/historials', require('./routes/historials'));
 app.use('/lendings', require('./routes/lendings'));
 
 app.listen(PORT , ()=> console.log(`Servidor levantado en el puerto ${PORT}`))
+
+module.exports = app
