@@ -23,7 +23,7 @@ const HistorialController = {
       .catch((err) => {
         console.log(err);
         res.status(500).send({
-          message: "Problem while getting the historials",
+          message: "Problem while getting the historial",
         });
       });
   },
