@@ -11,10 +11,7 @@ describe("testing/users", () => {
     confirmed: false,
   };
   test("Create a user", async () => {
-    const res = await request(app)
-      .post("/createUser")
-      .send(user)
-      .expect(201);
+    const res = await request(app).post("/createUser").send(user).expect(201);
 
     const sendUser = {
       ...user,
