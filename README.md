@@ -46,16 +46,12 @@ Proyecto bajo licencia de Daniel Miguelez.
 
 ### First gif, where we cann appreciate how to log with an user, create a post as an admin and how to delete your own post, after giving a like and modify the post itself.
 
-![foto](assets/POSTMAN.mp4)
+
 
 
 ### In the second one, we can see how to register an user, but previously we have proved that the notifications work, in case that something fails. Also how to create a post and put a comment in it.
 
-![foto](assets/POSTMAN.pdf)
 
-![foto](assets/relaciones.pdf)
-
-![foto](assets/WORKBENCH.pdf)
 
 
 ## Contact
