@@ -1,12 +1,12 @@
 # PRUEBA TECNICA DANIEL MIGUELEZ
 
-<h3 align="center">PRUEBA TENCICA BACKEND</h3>
+<h3 align="center">PRUEBA TECNICA BACKEND</h3>
 
 <p align="center">En este proyecto pongo en practica los conocimientos adquiridos durante mi etapa en el bootcamp, para Jaiden de Aiudo en una prueba tecnica.</p>
 
 ## Metas de esta prueba
 
-### Desarrollor de un backend de un banco utilizando los siguientes ENDPOINTS:
+### Desarrollar de un backend de un banco utilizando los siguientes ENDPOINTS:
 
 <objectives>
   <ol>
