@@ -91,6 +91,10 @@ Esta prueba esta bajo la licencia de Daniel Miguélez.
 
 ![foto](assets/WORKBENCH-1.png)
 
+### Aqui un endpoint documentdo en Swagger
+
+![foto](assets/swagger.png)
+
 ### En el segundo, se puede ver la relacion realizada en MySQL previa al proyecto realizado..
 
 ![foto](assets/relaciones-1.png)
