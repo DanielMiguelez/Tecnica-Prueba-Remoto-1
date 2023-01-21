@@ -2,7 +2,7 @@
 
 <h3 align="center">PRUEBA TENCICA BACKEND</h3>
 
-<p align="center">En este proyecto pongo en practica los conocimientos adquiridos durante mi etapa en el bootcamp, para Jaiden de Aiudo en unua prueba tecnica.</p>
+<p align="center">En este proyecto pongo en practica los conocimientos adquiridos durante mi etapa en el bootcamp, para Jaiden de Aiudo en una prueba tecnica.</p>
 
 ## Metas de esta prueba
 
