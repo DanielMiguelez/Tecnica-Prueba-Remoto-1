@@ -56,6 +56,19 @@ al API REST. Debe adjuntar la colección en el repositorio.
 • Utilizar Bitbucket (jriano@aiudo.es) o Github o Gitlab (jaidenmeiden@gmail.com) y
 compartir los repositorios, incluyéndolo como Maintainer.
 
+### POSTMAN ENLACES
+
+#### FOR USERS 
+https://lunar-space-777596.postman.co/workspace/Prueba-tecnica--Daniel~7b71701b-60cb-4298-8944-26dc5a936f97/collection/24675459-d4d0cfdc-168e-47a3-bf8f-b63b1a170676?action=share&creator=24675459
+
+### FOR HISTORIALS
+https://lunar-space-777596.postman.co/workspace/Prueba-tecnica--Daniel~7b71701b-60cb-4298-8944-26dc5a936f97/collection/24675459-51ed8ed7-f646-4c1c-82e0-3a4481557df3?action=share&creator=24675459
+
+### FOR LENDINGS
+https://lunar-space-777596.postman.co/workspace/Prueba-tecnica--Daniel~7b71701b-60cb-4298-8944-26dc5a936f97/collection/24675459-9b487ca5-8b9c-481f-a99f-ed3e85d4169d?action=share&creator=24675459
+
+### FOR ACCOUNTS
+https://lunar-space-777596.postman.co/workspace/Prueba-tecnica--Daniel~7b71701b-60cb-4298-8944-26dc5a936f97/collection/24675459-dd907feb-f411-4269-b866-29b2b216f136?action=share&creator=24675459
 
 ### Built With
 
