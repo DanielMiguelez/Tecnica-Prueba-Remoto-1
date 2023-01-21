@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { jwt_secret } = require("../config/config.json")["development"];
 const { Op } = Sequelize;
-const transporter = require("../config/nodemailer");
+const transporter = require("../config/nodemailer")
 
 const UserController = {
   async createUser(req, res, next) {
@@ -15,8 +15,11 @@ const UserController = {
         confirmed: false,
         rol: "user",
       });
-      
-      const url = 'http://localhost:3000/users/confirm/'+ req.body.email
+
+      const emailToken = jwt.sign({ email: req.body.email }, jwt_secret, {
+        expiresIn: "48h",
+      });
+      const url = "http://localhost:3000/users/confirm/" + emailToken;
       await transporter.sendMail({
         to: req.body.email,
         subject: "Confirm your registration",
@@ -123,11 +126,13 @@ const UserController = {
   },
   async confirm(req, res) {
     try {
+      const token = req.params.email;
+      const payload = jwt.verify(token, jwt_secret);
       await User.update(
         { confirmed: true },
         {
           where: {
-            email: req.params.email,
+            email: payload.email,
           },
         }
       );
@@ -157,7 +162,7 @@ const UserController = {
     } catch (error) {
       console.error(error);
     }
-  }
-}
+  },
+};
 
 module.exports = UserController;
