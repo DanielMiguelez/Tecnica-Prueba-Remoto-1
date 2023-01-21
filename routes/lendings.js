@@ -10,7 +10,7 @@ router.post(
   isAdmin,
   LendingController.createLending
 );
-router.get("/getLendings", authentication, LendingController.getLendings);
+router.get("/getLendings", LendingController.getLendings);
 router.put(
   "/updateLendingById/:id",
   authentication,
